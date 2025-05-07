@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Paws Breeders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+    nav a:hover {
+      background: #575757;
+    }
+    section {
+      padding: 20px;
+    }
+    .puppy-card {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Happy Paws Breeders</h1>
+    <p>Healthy, Loved, and Ready to Join Your Family</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#puppies">Available Puppies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Happy Paws</h2>
+    <p>We are a small, family-owned dog breeding business dedicated to raising healthy and happy puppies. Browse our site to learn more about us and our pups!</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>With over 10 years of experience, we breed with love and care. All of our dogs are raised in a home environment, well-socialized, and vet-checked before adoption.</p>
+  </section>
+
+  <section id="puppies">
+    <h2>Available Puppies</h2>
+
+    <div class="puppy-card">
+      <h3>Bella (Golden Retriever)</h3>
+      <p>8 weeks old, playful and loves belly rubs.</p>
+      <button onclick="selectPuppy('Bella (Golden Retriever)')">Adopt Bella</button>
+    </div>
+
+    <div class="puppy-card">
+      <h3>Max (Labrador)</h3>
+      <p>10 weeks old, curious and cuddly.</p>
+      <button onclick="selectPuppy('Max (Labrador)')">Adopt Max</button>
+    </div>
+
+    <h3 style="margin-top: 40px;">Request Adoption Slip</h3>
+    <form id="orderForm" onsubmit="return sendOrder()">
+      <label for="puppy">Selected Puppy:</label><br/>
+      <input type="text" id="puppy" name="puppy" readonly style="width: 100%;"><br/><br/>
+
+      <label for="name">Your Name:</label><br/>
+      <input type="text" id="name" name="name" required style="width: 100%;"><br/><br/>
+
+      <label for="email">Your Email:</label><br/>
+      <input type="email" id="email" name="email" required style="width: 100%;"><br/><br/>
+
+      <label for="message">Message:</label><br/>
+      <textarea id="message" name="message" rows="4" style="width: 100%;"></textarea><br/><br/>
+
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:happypaws@example.com">happypaws@example.com</a></p>
+    <p>Phone: (123) 456-7890</p>
+    <p>Location: Indianapolis, IN</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Happy Paws Breeders. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function selectPuppy(puppyName) {
+      document.getElementById("puppy").value = puppyName;
+      document.getElementById("message").value = `Hi, I’m interested in adopting ${puppyName}. Please contact me with next steps.`;
+      window.scrollTo({ top: document.getElementById("orderForm").offsetTop, behavior: 'smooth' });
+    }
+
+    function sendOrder() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const puppy = document.getElementById("puppy").value;
+      const message = document.getElementById("message").value;
+
+      const mailtoLink = `mailto:happypaws@example.com?subject=Adoption Request for ${puppy}&body=Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
+      window.location.href = mailtoLink;
+      return false; // Prevent actual form submission
+    }
+  </script>
+
+</body>
+</html>
